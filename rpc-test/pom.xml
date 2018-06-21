@@ -101,7 +101,47 @@
     </dependencies>
 
     <build>
+        <!--grpc rpc need-->
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.5.0.Final</version>
+            </extension>
+        </extensions>
         <plugins>
+            <!--grpc rpc need-->
+            <plugin>
+                <groupId>org.xolstice.maven.plugins</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+                <version>0.5.1</version>
+                <configuration>
+                    <!--默认值-->
+                    <protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>
+                    <!--默认值-->
+                    <!--<outputDirectory>${project.build.directory}/generated-sources/protobuf/java</outputDirectory>-->
+                    <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+                    <!--设置是否在生成java文件之前清空outputDirectory的文件，默认值为true，设置为false时也会覆盖同名文件-->
+                    <clearOutputDirectory>false</clearOutputDirectory>
+
+
+                    <protocArtifact>
+                        com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}
+                    </protocArtifact>
+                    <pluginId>grpc-java</pluginId>
+                    <pluginArtifact>
+                        io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}
+                    </pluginArtifact>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>compile-custom</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -113,6 +153,7 @@
                 </configuration>
             </plugin>
 
+            <!--hessian rpc need-->
             <!--jetty plugin to manage embedded jetty-->
             <!--No goal  is specified-->
             <plugin>
@@ -120,12 +161,12 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>8.1.7.v20120910</version>
                 <!--<configuration>-->
-                    <!--<connectors implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">-->
-                        <!--<connector>-->
-                            <!--<port>8668</port>-->
-                            <!--<maxIdleTime>30000</maxIdleTime>-->
-                        <!--</connector>-->
-                    <!--</connectors>-->
+                <!--<connectors implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">-->
+                <!--<connector>-->
+                <!--<port>8668</port>-->
+                <!--<maxIdleTime>30000</maxIdleTime>-->
+                <!--</connector>-->
+                <!--</connectors>-->
                 <!--</configuration>-->
             </plugin>
         </plugins>
