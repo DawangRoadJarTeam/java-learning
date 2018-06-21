@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
+
+    <!-- 如果遇到classNotFoundError，就删除本地maven仓库里的所有包 -->
+
+    <servlet>
+        <servlet-name>hessian</servlet-name>
+        <servlet-class>com.caucho.hessian.server.HessianServlet</servlet-class>
+        <init-param>
+            <param-name>home-api</param-name><!--接口声明-->
+            <param-value>cn.dawangroad.jarteam.hessian.IGreetingService</param-value>
+        </init-param>
+        <init-param>
+            <param-name>home-class</param-name><!--接口实现-->
+            <param-value>cn.dawangroad.jarteam.hessian.GreetingService</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hessian</servlet-name>
+        <url-pattern>/hessian</url-pattern>
+    </servlet-mapping>
+</web-app>
