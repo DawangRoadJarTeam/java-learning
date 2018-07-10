@@ -14,6 +14,7 @@
         <module>StringConcatenation</module>
         <module>protocol-buffers</module>
         <module>rpc-test</module>
+        <module>oom-study</module>
     </modules>
 
     <name>java-learning</name>
