@@ -15,6 +15,8 @@
         <module>protocol-buffers</module>
         <module>rpc-test</module>
         <module>oom-study</module>
+        <module>finalizer</module>
+        <module>algorithm</module>
     </modules>
 
     <name>java-learning</name>
