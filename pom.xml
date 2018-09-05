@@ -17,6 +17,7 @@
         <module>oom-study</module>
         <module>finalizer</module>
         <module>algorithm</module>
+        <module>concurrent</module>
     </modules>
 
     <name>java-learning</name>

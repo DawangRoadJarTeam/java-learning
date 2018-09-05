@@ -1,5 +1,6 @@
 package cn.dawangroad.jarteam.finalize;
 
+import java.lang.ref.PhantomReference;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.TimeUnit;
@@ -12,11 +13,13 @@ public class App {
 
 //        final WeakHashMap<Object, Object> weakHashMap = new WeakHashMap<>();
         FinalizeTest yzyTest = new FinalizeTest();
-
         ReferenceQueue<FinalizeTest> referenceQueue = new ReferenceQueue<>();
-        TestWeakReference<FinalizeTest> finalizeTestWeakReference = new TestWeakReference<>(yzyTest, new FinalizeTest(), referenceQueue);
+        PhantomReference<FinalizeTest> finalizeTestWeakReference = new PhantomReference<>(yzyTest,referenceQueue);
+        finalizeTestWeakReference = null;
+
+//        TestWeakReference<FinalizeTest> finalizeTestWeakReference = new TestWeakReference<>(yzyTest, new FinalizeTest(), referenceQueue);
 //        weakHashMap.put(yzyTest, new FinalizeTest());
-        yzyTest = null;
+//        yzyTest = null;
 
 //        FinalizeTest yzyTest1 = new FinalizeTest();
 //        yzyTest1 = null;
@@ -27,13 +30,13 @@ public class App {
 
         System.gc();
         TimeUnit.SECONDS.sleep(2);
-        TestWeakReference<FinalizeTest> reference = (TestWeakReference<FinalizeTest>) referenceQueue.poll();
-        reference.value = null;
-        reference = null;
+//        TestWeakReference<FinalizeTest> reference = (TestWeakReference<FinalizeTest>) referenceQueue.poll();
+//        reference.value = null;
+//        reference = null;
 //
 //        weakHashMap.size();
-        System.gc();
-        TimeUnit.SECONDS.sleep(2);
+//        System.gc();
+//        TimeUnit.SECONDS.sleep(2);
 
 /*
         List<WeakHashMap<byte[][], byte[][]>> maps = new ArrayList<WeakHashMap<byte[][], byte[][]>>();
