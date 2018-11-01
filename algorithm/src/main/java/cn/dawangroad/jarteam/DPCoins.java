@@ -9,7 +9,7 @@ import java.util.List;
  * @author zhiyingyang
  * @version 2018-10-11 17:08
  */
-public class DP {
+public class DPCoins {
     private static final int[] coins = {3, 3, 5};
 
     public static int minCoinNums(int x) {

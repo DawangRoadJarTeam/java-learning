@@ -53,7 +53,7 @@ public class LP {
             }
         }
 
-        for(String str : sets){
+        for (String str : sets) {
             System.out.println(str);
 
         }
