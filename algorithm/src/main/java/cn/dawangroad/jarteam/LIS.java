@@ -1,13 +1,16 @@
 package cn.dawangroad.jarteam;
 
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
+
 /**
  * @author zhiyingyang
  * @version 2018-10-11 18:08
  */
 public class LIS {
 
-    public static void main(String[] args) {
-        int[] arr = {5,3,4,8,6,6,6,6,6,6,7};
+    public static void main(String[] args) throws BrokenBarrierException, InterruptedException {
+        int[] arr = {5, 3, 4, 8, 6, 6, 6, 6, 6, 6, 7};
         System.out.println("lis:" + lis(arr, arr.length));
         System.out.println("fastNonDownLis:" + fastNonDownLis(arr, arr.length));
         System.out.println("fastIncreaseLis:" + fastIncreaseLis(arr, arr.length));
@@ -63,7 +66,7 @@ public class LIS {
             if (arr[mid] <= key) {
                 s = mid + 1;
             } else {
-                e = mid;
+                e = mid - 1;
             }
         }
         return s;
