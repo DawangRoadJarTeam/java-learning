@@ -1,4 +1,4 @@
-package cn.dawangroad.jarteam;
+package cn.dawangroad.jarteam.initialorder;
 
 /**
  * @author ervin
